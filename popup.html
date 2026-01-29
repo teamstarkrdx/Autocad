@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="icons/icon48.png" class="icon">
+      <h1>AutoCart Assistant Pro</h1>
+      <div class="display-name" id="displayName">AutoCart Pro</div>
+    </div>
+
+    <div class="section">
+      <h3>👤 Profile Autofill</h3>
+      <input type="text" id="fullName" placeholder="Full Name">
+      <input type="text" id="phone" placeholder="Phone">
+      <input type="text" id="address1" placeholder="Address Line 1">
+      <input type="text" id="address2" placeholder="Address Line 2">
+      <input type="text" id="city" placeholder="City">
+      <select id="state">
+        <option>State</option>
+        <option>Delhi</option>
+        <option>Maharashtra</option>
+      </select>
+      <input type="text" id="pincode" placeholder="Pincode">
+    </div>
+
+    <div class="section">
+      <h3>📏 Sizes</h3>
+      <div>
+        <label>Topwear (M,L):</label>
+        <input type="text" id="topSizes" value="M,L" style="width: 80px;">
+      </div>
+      <div>
+        <label>Bottomwear (32,34):</label>
+        <input type="text" id="bottomSizes" value="32,34" style="width: 80px;">
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>🎟️ Coupons</h3>
+      <textarea id="coupons" rows="4" placeholder="One coupon per line"></textarea>
+      <div class="coupon-stats">
+        <span id="unusedCount">Unused: 0</span>
+        <span id="usedCount">Used: 0</span>
+        <span id="failedCount">Failed: 0</span>
+      </div>
+      <div class="btn-group">
+        <button id="importCoupons">Import .txt</button>
+        <button id="exportCoupons">Export .txt</button>
+        <button id="clearFailed">Clear Failed</button>
+        <button id="resetCoupons">Reset All</button>
+      </div>
+    </div>
+
+    <!-- 🔴 CRITICAL USER INPUTS -->
+    <div class="section warning">
+      <h3>🔴 REQUIRED CONFIG</h3>
+      <input type="text" id="telegramBotToken" placeholder="🔴 TELEGRAM_BOT_TOKEN">
+      <input type="text" id="telegramChatId" placeholder="🔴 TELEGRAM_CHAT_ID">
+      <input type="text" id="upiId" placeholder="🔴 UPI_ID (name@okaxis)">
+    </div>
+
+    <div class="section">
+      <h3>⚙️ Controls</h3>
+      <label>Auto Mode: <input type="checkbox" id="autoMode" checked></label>
+      <div>
+        <label>Poll (ms): <input type="number" id="pollInterval" value="5000" min="1000"></label>
+        <label>Click (ms): <input type="number" id="clickInterval" value="450" min="100"></label>
+      </div>
+      <div>
+        <label>Max Retries: <input type="number" id="maxRetries" value="3" min="1"></label>
+        <label>Max Products: <input type="number" id="maxProducts" value="50" min="1"></label>
+      </div>
+      <label>Stop at Payment: <input type="checkbox" id="stopAtPayment" checked></label>
+      <label>Trigger Payment: <input type="checkbox" id="triggerPayment" checked></label>
+    </div>
+
+    <div class="btn-section">
+      <button id="saveSettings" class="btn-primary">💾 Save Settings</button>
+      <button id="runNow" class="btn-success">▶️ Run Now</button>
+      <button id="stopNow" class="btn-danger">⏹️ Stop</button>
+      <button id="resetHistory" class="btn-warning">🗑️ Reset Product History</button>
+    </div>
+
+    <div class="section logs-section">
+      <h3>📋 Logs <span id="logFilter" class="filter-btn active">ALL</span></h3>
+      <div class="log-filters">
+        <button class="filter-btn" data-filter="ALL">ALL</button>
+        <button class="filter-btn" data-filter="ERROR">ERROR</button>
+        <button class="filter-btn" data-filter="COUPON">COUPON</button>
+        <button class="filter-btn" data-filter="STOCK">STOCK</button>
+        <button class="filter-btn" data-filter="CART">CART</button>
+      </div>
+      <div id="logs" class="logs-container"></div>
+      <div class="log-actions">
+        <button id="copyLogs">📋 Copy</button>
+        <button id="downloadLogs">💾 Download</button>
+        <button id="clearLogs">🗑️ Clear</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
